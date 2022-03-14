@@ -1,9 +1,5 @@
 import React from "react";
 import logo from "../../assets/images/logo.svg";
-import fb from "../../assets/images/fb.svg";
-import tweet from "../../assets/images/tweet.svg";
-import wa from "../../assets/images/wa.svg";
-import share from "../../assets/images/share.svg";
 
 import "./info.css";
 import Socials from "../socials/socials";
