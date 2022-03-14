@@ -1,0 +1,12 @@
+.share-buttons {
+  display: flex;
+  flex-direction: row;
+  width: "100%";
+  justify-content: center;
+}
+
+.share-btn {
+  max-width: 50px;
+  margin: 20px;
+  cursor: pointer;
+}

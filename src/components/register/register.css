@@ -1,0 +1,103 @@
+.register {
+  padding: 80px;
+  z-index: 15;
+}
+
+.top-img {
+  max-width: 500px;
+}
+
+.claim-text {
+  font-weight: 800;
+  color: white;
+  font-size: 1.8rem;
+  text-shadow: 0px 0px 1px white;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  position: relative;
+  padding-right: 180px;
+}
+
+input {
+  border-radius: 35px;
+  height: 60px;
+  text-align: center;
+  border: none;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  background-color: #fdd089;
+  font-weight: bold;
+}
+
+input::placeholder {
+  color: #be9b67;
+}
+
+.buttons {
+  margin-top: 60px;
+}
+
+.reveal-btn {
+  border-radius: 35px;
+  height: 60px;
+  text-align: center;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  width: 100%;
+  color: white;
+  background: rgb(253, 112, 38);
+  background: linear-gradient(
+    90deg,
+    rgba(253, 112, 38, 1) 0%,
+    rgba(254, 44, 15, 1) 100%
+  );
+  cursor: pointer;
+  margin-top: 60px;
+}
+
+.fb-button {
+  border-radius: 35px;
+  height: 60px;
+  text-align: center;
+  border: solid;
+  border-color: #be9b67;
+  font-size: 1.4rem;
+  font-weight: bold;
+  width: 100%;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.fb-button:hover {
+  background-color: #be9b67;
+}
+
+.reveal-btn:hover {
+  background: rgb(253, 112, 38);
+  background: linear-gradient(
+    90deg,
+    rgb(185, 81, 25) 0%,
+    rgb(141, 28, 13) 100%
+  );
+}
+
+.or {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.dude-img {
+  position: absolute;
+  width: 125px;
+  right: 0;
+  bottom: 0;
+}
