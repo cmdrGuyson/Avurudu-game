@@ -1,0 +1,43 @@
+.game {
+  width: 70%;
+  margin: auto;
+  padding: 10%;
+}
+
+.pot {
+  width: 120px;
+  top: -8px;
+  position: relative;
+}
+
+.pot:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.pot-row {
+  border-top: solid;
+  border-color: #fbae17;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.all-pots {
+  border-right: solid;
+  border-left: solid;
+  border-color: #fbae17;
+  border-width: 27px;
+  padding-top: 15px;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+.nuts-alt {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  width: 110px;
+}

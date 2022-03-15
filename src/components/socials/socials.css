@@ -10,3 +10,7 @@
   margin: 20px;
   cursor: pointer;
 }
+
+.share-btn:hover {
+  transform: scale(1.2);
+}

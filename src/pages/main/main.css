@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.leaves-left {
+  position: fixed;
+  width: 280px;
+  top: 50px;
+  left: 0;
+  z-index: 10;
+}
