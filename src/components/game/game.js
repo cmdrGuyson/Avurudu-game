@@ -3,7 +3,7 @@ import React from "react";
 import "./game.css";
 
 import pot from "../../assets/images/pot.svg";
-import nuts from "../../assets/images/nuts-alt.svg";
+import leaf from "../../assets/images/leaf.svg";
 
 const getPotRow = (count) => {
   const row = [];
@@ -20,7 +20,7 @@ const getAllPots = (potCount, count) => {
   }
   return (
     <div className="all-pots">
-      <img src={nuts} className="nuts-alt" alt="nuts-alt"></img>
+      <img src={leaf} className="nuts-alt" alt="nuts-alt" />
       {pots}
     </div>
   );

@@ -27,9 +27,7 @@ const Voucher = () => {
           </div>
           <div className="buttons-container">
             <button className="print-btn">Print or Copy</button>
-            <button href="#" className="shop-btn">
-              SHOP NOW
-            </button>
+            <button className="shop-btn">SHOP NOW</button>
           </div>
         </div>
       </div>

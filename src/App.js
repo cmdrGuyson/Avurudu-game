@@ -8,6 +8,7 @@ import Result from "./pages/result/result";
 
 import koha from "./assets/sounds/koha.mp3";
 import { useEffect, useState } from "react";
+import Fail from "./pages/fail/fail";
 
 const Sound = require("react-sound").default;
 
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/" element={<Main />} />
           <Route exact path="/result" element={<Result />} />
           <Route exact path="/claim" element={<Claim />} />
+          <Route exact path="/fail" element={<Fail />} />
         </Routes>
       </Router>
     </div>
