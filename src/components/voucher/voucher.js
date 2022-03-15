@@ -2,6 +2,8 @@ import React from "react";
 import logo from "../../assets/images/logo.svg";
 import flower from "../../assets/images/flower.svg";
 import congrats from "../../assets/images/congrats.svg";
+import manleft from "../../assets/images/man-left.svg";
+import manright from "../../assets/images/man-right.svg";
 
 import "./voucher.css";
 
@@ -11,6 +13,8 @@ const Voucher = () => {
       <img src={flower} alt="flower" className="flower1" />
       <img src={flower} alt="flower" className="flower2" />
       <img src={flower} alt="flower" className="flower3" />
+      <img src={manleft} alt="man" className="man-left" />
+      <img src={manright} alt="man" className="man-right" />
       <div className="voucher">
         <img src={logo} alt="logo" className="logo" />
         <div className="right-container">

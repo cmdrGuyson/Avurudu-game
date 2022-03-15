@@ -8,15 +8,13 @@
 .voucher-container {
   width: 100%;
   height: 100%;
-  margin-left: 120px;
-  margin-right: 120px;
   background-color: #bf2433;
   border: solid;
   border-color: black;
   padding: 30px;
   position: relative;
   z-index: 20;
-  max-width: 950px;
+  max-width: 780px;
   margin: auto;
 }
 
@@ -136,4 +134,18 @@
   color: white;
   font-size: 1.3rem;
   margin-top: 40px;
+}
+
+.man-left {
+  position: absolute;
+  width: 150px;
+  bottom: -215px;
+  left: -110px;
+}
+
+.man-right {
+  position: absolute;
+  width: 150px;
+  bottom: -215px;
+  right: -110px;
 }

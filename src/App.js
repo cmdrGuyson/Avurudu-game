@@ -6,9 +6,29 @@ import Claim from "./pages/claim/claim";
 import Main from "./pages/main/main";
 import Result from "./pages/result/result";
 
+import koha from "./assets/sounds/koha.mp3";
+import { useEffect, useState } from "react";
+
+const Sound = require("react-sound").default;
+
 function App() {
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    // playMusic();
+  }, []);
+
+  const playMusic = () => {
+    document.addEventListener("click", () => setPlaying(true));
+  };
+
   return (
     <div className="App">
+      <Sound
+        url={koha}
+        loop={true}
+        playStatus={playing ? "PLAYING" : "STOPPED"}
+      />
       <Router>
         <Routes>
           <Route exact path="/" element={<Main />} />
