@@ -1,6 +1,9 @@
 .register {
   padding: 80px;
+  margin: auto;
   z-index: 15;
+  width: 120%;
+  padding-left: 255px;
 }
 
 .top-img {
