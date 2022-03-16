@@ -10,6 +10,9 @@ import koha from "./assets/sounds/koha.mp3";
 import { useEffect, useState } from "react";
 import Fail from "./pages/fail/fail";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Sound = require("react-sound").default;
 
 function App() {
@@ -38,6 +41,7 @@ function App() {
           <Route exact path="/fail" element={<Fail />} />
         </Routes>
       </Router>
+      <ToastContainer />
     </div>
   );
 }
