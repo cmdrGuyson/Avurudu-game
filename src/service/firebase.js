@@ -28,10 +28,16 @@ class Firebase {
     await signOut(auth);
   }
 
-  static saveVouchers(vouchers) {
+  static async saveVouchers(vouchers) {
     const batch = writeBatch(firestore);
     vouchers.forEach((voucher) => {
-      const docRef = doc(collection(firestore, "vouchers"));
+      const name =
+        voucher["Coupon Type"] === "Premium"
+          ? "PremiumVouchers"
+          : voucher["Coupon Type"] === "10% Discount"
+          ? "StandardVouchers"
+          : "LowVouchers";
+      const docRef = doc(collection(firestore, name));
       const data = {
         id: voucher["#"],
         title: voucher["Coupon Title"],
@@ -41,7 +47,7 @@ class Firebase {
       };
       batch.set(docRef, data);
     });
-    batch.commit();
+    await batch.commit();
   }
 }
 

@@ -5,8 +5,14 @@ const csvFilePath = "voucher.csv";
 const upload = async () => {
   try {
     const array = await csv().fromFile(csvFilePath);
-    console.log(array);
-    await Firebase.saveVouchers(array);
+    const vouchers = [];
+    array.forEach((item) => {
+      if (item["Coupon Title"]) {
+        vouchers.push(item);
+      }
+    });
+    console.log(vouchers, vouchers.length);
+    await Firebase.saveVouchers(vouchers);
   } catch (error) {
     console.error(error);
   }
