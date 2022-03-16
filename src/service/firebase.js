@@ -1,7 +1,16 @@
-import { initializeApp } from "firebase/app";
-import { signInWithEmailAndPassword, getAuth, signOut } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import config from "./config.json";
+const { initializeApp } = require("firebase/app");
+const {
+  signInWithEmailAndPassword,
+  getAuth,
+  signOut,
+} = require("firebase/auth");
+const {
+  getFirestore,
+  writeBatch,
+  doc,
+  collection,
+} = require("firebase/firestore");
+const config = require("./config.json");
 
 // Initialize Firebase
 
@@ -18,6 +27,22 @@ class Firebase {
   static async logout() {
     await signOut(auth);
   }
+
+  static saveVouchers(vouchers) {
+    const batch = writeBatch(firestore);
+    vouchers.forEach((voucher) => {
+      const docRef = doc(collection(firestore, "vouchers"));
+      const data = {
+        id: voucher["#"],
+        title: voucher["Coupon Title"],
+        type: voucher["Coupon Type"],
+        code: voucher["Coupon Code"],
+        claimed: false,
+      };
+      batch.set(docRef, data);
+    });
+    batch.commit();
+  }
 }
 
-export default Firebase;
+module.exports = Firebase;
