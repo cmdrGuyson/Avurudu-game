@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 import lines from "../../assets/images/lines.svg";
 import lines2 from "../../assets/images/lines2.svg";
@@ -12,6 +13,14 @@ import "./fail.css";
 import Socials from "../../components/socials/socials";
 
 const Fail = () => {
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/fail" });
+  }, []);
+
+  const onShop = () => {
+    window.location.assign("http://www.innovink.lk");
+  };
+
   return (
     <div className="fail">
       <img src={lines2} className="lines-left" alt="lines-left" />
@@ -26,7 +35,9 @@ const Fail = () => {
           ඔබ දැනටමත් ලියාපදිංචි වී ඇත! <br />
           redeem code එක භාවිතා කර අවුරුදු තෑගි තෝරන්න.
         </p>
-        <button className="reveal-btn fail-shop">SHOP NOW</button>
+        <button className="reveal-btn fail-shop" onClick={onShop}>
+          SHOP NOW
+        </button>
         <p className="terms-txt">
           තෑග්ග වලංගු වන්නේ 2022 අප්‍රේල් 30 දක්වා පමණි.
           <br />

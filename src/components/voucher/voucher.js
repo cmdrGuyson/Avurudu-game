@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
 import logo from "../../assets/images/logo.svg";
 import flower from "../../assets/images/flower.svg";
 import congrats from "../../assets/images/congrats.svg";
 import manleft from "../../assets/images/man-left.svg";
 import manright from "../../assets/images/man-right.svg";
+import { useWinState } from "../../context/data.context";
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPDF,
+  exportComponentAsPNG,
+} from "react-component-export-image";
 
 import "./voucher.css";
 
 const Voucher = () => {
+  const winState = useWinState();
+
+  const onShop = () => {
+    window.location.assign("http://www.innovink.lk");
+  };
+
+  const componentRef = useRef();
+
+  const onPrint = () => {
+    exportComponentAsPNG(componentRef);
+  };
+
+  if (!winState?.winState?.voucher) return null;
+
   return (
-    <div className="voucher-container">
+    <div className="voucher-container" ref={componentRef}>
       <img src={flower} alt="flower" className="flower1" />
       <img src={flower} alt="flower" className="flower2" />
       <img src={flower} alt="flower" className="flower3" />
@@ -20,14 +40,19 @@ const Voucher = () => {
         <div className="right-container">
           <img src={congrats} className="congrats" alt="congrats" />
           <p className="title-voucher">
-            මෙන්න ඔබ ජයග්‍රහණය කරපු (gift name) එක redeem කරගන්න code එක.
+            මෙන්න ඔබ ජයග්‍රහණය කරපු {winState?.winState?.voucher.title} එක
+            redeem කරගන්න code එක.
           </p>
           <div className="code">
-            <p>000000000000</p>
+            <p>{winState?.winState?.voucher.code}</p>
           </div>
           <div className="buttons-container">
-            <button className="print-btn">Print or Copy</button>
-            <button className="shop-btn">SHOP NOW</button>
+            <button className="print-btn" onClick={onPrint}>
+              Print or Copy
+            </button>
+            <button className="shop-btn" onClick={onShop}>
+              SHOP NOW
+            </button>
           </div>
         </div>
       </div>

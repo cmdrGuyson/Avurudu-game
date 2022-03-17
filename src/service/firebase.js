@@ -36,7 +36,7 @@ const auth = getAuth();
 const firestore = getFirestore();
 
 let FREE_VOUCHER = {
-  code: "FREE_VOUCHER_CODE",
+  code: "DJXH3TMR",
   type: "5% Discount",
   title: "5% Discount",
 };
@@ -53,12 +53,11 @@ class Firebase {
       email,
       "PASSWORD"
     );
-    if (auth.currentUser) {
-      await updateCurrentUser(auth.currentUser, {
-        displayName: name,
-        phoneNumber: phone,
-      });
-    }
+    await setDoc(doc(firestore, "Users", response.user.uid), {
+      email: email,
+      phoneNumber: phone,
+      name: name,
+    });
   }
 
   static async logout() {
@@ -139,6 +138,11 @@ class Firebase {
   }
 
   static async claimVoucher(voucherType, querySnapshot) {
+    if (!auth.currentUser.uid) throw Error("Error while claiming voucher");
+    const userInfo = await getDoc(
+      doc(firestore, "Users", auth.currentUser.uid)
+    );
+    if (!userInfo.exists) throw Error("Error while claiming voucher");
     if (voucherType === "LOSE" || !querySnapshot) return FREE_VOUCHER;
     const collectionName =
       voucherType === "PREMIUM"
@@ -169,21 +173,13 @@ class Firebase {
           ? "standardVoucherWinners"
           : "lowVoucherWinners";
 
-      console.log(fieldName, {
-        claimedBy: auth.currentUser?.uid || "N/A",
-        claimedByName: auth.currentUser?.displayName || "N/A",
-        claimedByEmail: auth.currentUser?.email || "N/A",
-        voucherCode: claimedVoucher.code,
-        voucherId: claimedVoucher.id,
-      });
-
       // Push winner to daily winners
       await updateDoc(dailyRef, {
         [fieldName]: arrayUnion({
           claimedBy: auth.currentUser?.uid || "N/A",
-          claimedByName: auth.currentUser?.displayName || "N/A",
+          claimedByName: userInfo.data().name || "N/A",
           claimedByEmail: auth.currentUser?.email || "N/A",
-          claimedByPhone: auth.currentUser?.phoneNumber || "N/A",
+          claimedByPhone: userInfo.data().phoneNumber || "N/A",
           voucherCode: claimedVoucher.code,
           voucherId: querySnapshot.docs[0].id,
         }),
@@ -192,6 +188,21 @@ class Firebase {
       claimedVoucher = FREE_VOUCHER;
     }
 
+    return claimedVoucher;
+  }
+
+  static async getWinningVoucher() {
+    const settings = await this.getSettings();
+    return this.rnJesus(settings);
+  }
+
+  static async claimWinningVoucher(voucherType) {
+    const querySnapshot = await this.getVoucherSnapshot(voucherType);
+
+    let claimedVoucher;
+
+    if (!querySnapshot || querySnapshot.empty) claimedVoucher = FREE_VOUCHER;
+    else claimedVoucher = await this.claimVoucher(voucherType, querySnapshot);
     return claimedVoucher;
   }
 

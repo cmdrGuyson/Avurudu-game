@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 import lines from "../../assets/images/lines.svg";
 import lines2 from "../../assets/images/lines2.svg";
@@ -8,6 +9,10 @@ import Voucher from "../../components/voucher/voucher";
 import "./claim.css";
 
 const Claim = () => {
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/claim" });
+  }, []);
+
   return (
     <div className="claim-container">
       <img src={lines2} className="lines-left" alt="lines-left"></img>

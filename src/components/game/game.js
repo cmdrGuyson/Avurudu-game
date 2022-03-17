@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import "./game.css";
 
 import pot from "../../assets/images/pot.svg";
 import leaf from "../../assets/images/leaf.svg";
 import Firebase from "../../service/firebase";
+import { useWinState } from "../../context/data.context";
 
-const Game = () => {
+const Game = (props) => {
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const winState = useWinState();
 
   const getPotRow = (count) => {
     const row = [];
@@ -40,10 +45,13 @@ const Game = () => {
   };
 
   const handlePotClick = async () => {
+    props.onClaim?.();
     setLoading(true);
     try {
       if (!loading) {
-        //await Firebase.playGame();
+        const type = await Firebase.getWinningVoucher();
+        navigate("/result");
+        winState.setWin({ ...winState, winState: type });
       }
     } catch (error) {
       toast.error(error);
