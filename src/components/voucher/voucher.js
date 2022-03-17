@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.png";
 import flower from "../../assets/images/flower.svg";
-import congrats from "../../assets/images/congrats.svg";
+import congrats from "../../assets/images/cons.png";
 import manleft from "../../assets/images/man-left.svg";
 import manright from "../../assets/images/man-right.svg";
 import { useWinState } from "../../context/data.context";
@@ -10,6 +10,7 @@ import {
   exportComponentAsPDF,
   exportComponentAsPNG,
 } from "react-component-export-image";
+import html2canvas from "html2canvas";
 
 import "./voucher.css";
 
@@ -20,16 +21,31 @@ const Voucher = () => {
     window.location.assign("http://www.innovink.lk");
   };
 
-  const componentRef = useRef();
+  const printRef = React.useRef();
 
-  const onPrint = () => {
-    exportComponentAsPNG(componentRef);
+  const handleDownloadImage = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element);
+
+    const data = canvas.toDataURL("image/jpg");
+    const link = document.createElement("a");
+
+    if (typeof link.download === "string") {
+      link.href = data;
+      link.download = "image.jpg";
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(data);
+    }
   };
 
   if (!winState?.winState?.voucher) return null;
 
   return (
-    <div className="voucher-container" ref={componentRef}>
+    <div className="voucher-container" ref={printRef}>
       <img src={flower} alt="flower" className="flower1" />
       <img src={flower} alt="flower" className="flower2" />
       <img src={flower} alt="flower" className="flower3" />
@@ -47,8 +63,8 @@ const Voucher = () => {
             <p>{winState?.winState?.voucher.code}</p>
           </div>
           <div className="buttons-container">
-            <button className="print-btn" onClick={onPrint}>
-              Print or Copy
+            <button className="print-btn" onClick={handleDownloadImage}>
+              Download Voucher
             </button>
             <button className="shop-btn" onClick={onShop}>
               SHOP NOW
