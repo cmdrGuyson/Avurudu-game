@@ -43,7 +43,7 @@ const Game = () => {
     setLoading(true);
     try {
       if (!loading) {
-        await Firebase.playGame();
+        //await Firebase.playGame();
       }
     } catch (error) {
       toast.error(error);

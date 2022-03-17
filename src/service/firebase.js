@@ -3,6 +3,8 @@ const {
   signInWithEmailAndPassword,
   getAuth,
   signOut,
+  createUserWithEmailAndPassword,
+  updateCurrentUser,
 } = require("firebase/auth");
 const {
   getFirestore,
@@ -43,6 +45,20 @@ class Firebase {
   static async login(email, password) {
     const response = await signInWithEmailAndPassword(auth, email, password);
     return response;
+  }
+
+  static async register(email, phone, name) {
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      "PASSWORD"
+    );
+    if (auth.currentUser) {
+      await updateCurrentUser(auth.currentUser, {
+        displayName: name,
+        phoneNumber: phone,
+      });
+    }
   }
 
   static async logout() {
@@ -106,9 +122,8 @@ class Firebase {
     return settings;
   }
 
-  static async claimVoucher(voucherType) {
-    if (voucherType === "LOSE") return FREE_VOUCHER;
-
+  static async getVoucherSnapshot(voucherType) {
+    if (voucherType === "LOSE") return null;
     const collectionName =
       voucherType === "PREMIUM"
         ? "PremiumVouchers"
@@ -119,6 +134,18 @@ class Firebase {
     const collectionRef = collection(firestore, collectionName);
     const q = query(collectionRef, where("claimed", "==", false), limit(1));
     const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) return null;
+    return querySnapshot;
+  }
+
+  static async claimVoucher(voucherType, querySnapshot) {
+    if (voucherType === "LOSE" || !querySnapshot) return FREE_VOUCHER;
+    const collectionName =
+      voucherType === "PREMIUM"
+        ? "PremiumVouchers"
+        : voucherType === "STANDARD"
+        ? "StandardVouchers"
+        : "LowVouchers";
 
     let claimedVoucher;
 
@@ -156,6 +183,7 @@ class Firebase {
           claimedBy: auth.currentUser?.uid || "N/A",
           claimedByName: auth.currentUser?.displayName || "N/A",
           claimedByEmail: auth.currentUser?.email || "N/A",
+          claimedByPhone: auth.currentUser?.phoneNumber || "N/A",
           voucherCode: claimedVoucher.code,
           voucherId: querySnapshot.docs[0].id,
         }),
@@ -170,7 +198,13 @@ class Firebase {
   static async playGame() {
     const settings = await this.getSettings();
     const voucherType = this.rnJesus(settings);
-    const claimedVoucher = await this.claimVoucher(voucherType);
+    const querySnapshot = await this.getVoucherSnapshot(voucherType);
+
+    let claimedVoucher;
+
+    if (!querySnapshot || querySnapshot.empty) claimedVoucher = FREE_VOUCHER;
+    else claimedVoucher = await this.claimVoucher(voucherType, querySnapshot);
+
     console.log(settings, voucherType, claimedVoucher);
   }
 
@@ -197,4 +231,4 @@ class Firebase {
   }
 }
 
-module.exports = Firebase;
+export default Firebase;
