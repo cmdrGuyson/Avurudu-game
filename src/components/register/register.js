@@ -74,8 +74,8 @@ const Register = () => {
         >
           REVEAL MY GIFT
         </button>
-        <p className="or">or</p>
-        <button className="fb-button">Login with Facebook</button>
+        {/* <p className="or">or</p>
+        <button className="fb-button">Login with Facebook</button> */}
         <img src={dude} alt="dude" className="dude-img" />
       </div>
     </div>

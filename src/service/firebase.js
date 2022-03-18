@@ -181,6 +181,7 @@ class Firebase {
           claimedByPhone: userInfo.data().phoneNumber || "N/A",
           voucherCode: claimedVoucher.code,
           voucherId: querySnapshot.docs[0].id,
+          claimedAt: new Date(),
         }),
       });
     } else {
