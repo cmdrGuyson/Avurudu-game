@@ -4,7 +4,6 @@ const {
   getAuth,
   signOut,
   createUserWithEmailAndPassword,
-  updateCurrentUser,
 } = require("firebase/auth");
 const {
   getFirestore,

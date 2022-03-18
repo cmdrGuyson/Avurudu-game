@@ -18,7 +18,7 @@ const Fail = () => {
   }, []);
 
   const onShop = () => {
-    window.location.assign("http://www.innovink.lk");
+    window.location.assign("https://www.innovink.lk");
   };
 
   return (

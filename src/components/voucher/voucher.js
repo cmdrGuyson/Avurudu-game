@@ -1,15 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import logo from "../../assets/images/logo.png";
 import flower from "../../assets/images/flower.svg";
 import congrats from "../../assets/images/cons.png";
 import manleft from "../../assets/images/man-left.svg";
 import manright from "../../assets/images/man-right.svg";
 import { useWinState } from "../../context/data.context";
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
 import html2canvas from "html2canvas";
 
 import "./voucher.css";
@@ -18,7 +13,7 @@ const Voucher = () => {
   const winState = useWinState();
 
   const onShop = () => {
-    window.location.assign("http://www.innovink.lk");
+    window.location.assign("https://www.innovink.lk");
   };
 
   const printRef = React.useRef();

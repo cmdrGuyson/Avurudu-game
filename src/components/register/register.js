@@ -19,16 +19,12 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
 
   const handleEmailSignup = async () => {
-    if (mobile.length !== 10) {
+    if (mobile.trim().length !== 10) {
       toast.error("Invalid phone number");
     } else {
       setLoading(true);
       try {
-        const response = await Firebase.register(
-          email.trim(),
-          mobile.trim(),
-          name.trim()
-        );
+        await Firebase.register(email.trim(), mobile.trim(), name.trim());
         const voucher = await Firebase.claimWinningVoucher(
           winState.winState.winState
         );
