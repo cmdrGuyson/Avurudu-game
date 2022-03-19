@@ -4,6 +4,12 @@
   padding: 10%;
 }
 
+.game-mobile {
+  width: 80%;
+  margin: auto;
+  padding: 10%;
+}
+
 .pot {
   width: 120px;
   top: -8px;
@@ -25,6 +31,20 @@
   padding-right: 3rem;
 }
 
+.pot-mobile {
+  width: 70px;
+  top: -8px;
+  position: relative;
+}
+
+.pot-row-mobile {
+  border-top: solid;
+  border-color: #fbae17;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
 .all-pots {
   border-right: solid;
   border-left: solid;
@@ -35,9 +55,22 @@
   position: relative;
 }
 
+.all-pots-mobile {
+  border-right: solid;
+  border-left: solid;
+  border-color: #faaf18;
+  border-width: 27px;
+  padding-top: 15px;
+  padding-bottom: 100px;
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+}
+
 .nuts-alt {
   position: absolute;
   top: -7px;
   right: 0;
   width: 140px;
+  z-index: 10;
 }

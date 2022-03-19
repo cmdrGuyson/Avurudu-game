@@ -12,9 +12,11 @@ import win from "./assets/sounds/win.mp3";
 import { useRef } from "react";
 import Fail from "./pages/fail/fail";
 import Unavailable from "./pages/unavailable/unavailable";
+import MainMobile from "./mobile/main";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import arrow from "./assets/images/arrow-btn.svg";
 
 import { WinStateProvider } from "./context/data.context";
 
@@ -39,7 +41,21 @@ function App() {
       <audio src={win} ref={winRef} />
       <WinStateProvider>
         {window.innerWidth < 1100 ? (
-          <Unavailable />
+          <>
+            <img alt="info-btn" src={arrow} className="info-btn" />
+            <Router>
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={<MainMobile onClaim={onWin} />}
+                />
+                <Route exact path="/result" element={<Result />} />
+                <Route exact path="/claim" element={<Claim />} />
+                <Route exact path="/fail" element={<Fail />} />
+              </Routes>
+            </Router>
+          </>
         ) : (
           <Router>
             <Routes>

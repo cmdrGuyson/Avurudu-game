@@ -1,0 +1,12 @@
+.logo-mobile {
+  max-width: 300px;
+  margin-top: 50px;
+}
+
+.leaves-left-mobile {
+  position: fixed;
+  width: 200px;
+  top: 320px;
+  left: 0;
+  z-index: 10;
+}

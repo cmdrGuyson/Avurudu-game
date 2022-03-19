@@ -17,9 +17,10 @@ const {
   limit,
   getDocs,
   updateDoc,
+  Timestamp,
   arrayUnion,
 } = require("firebase/firestore");
-const config = require("./config.json");
+const config = require("./dev-config.json");
 
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
@@ -181,7 +182,7 @@ class Firebase {
           claimedByPhone: userInfo.data().phoneNumber || "N/A",
           voucherCode: claimedVoucher.code,
           voucherId: querySnapshot.docs[0].id,
-          claimedAt: new Date(),
+          claimedAt: Timestamp.fromDate(new Date()),
         }),
       });
     } else {

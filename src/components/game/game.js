@@ -8,6 +8,7 @@ import pot from "../../assets/images/pot.svg";
 import leaf from "../../assets/images/leaf.svg";
 import Firebase from "../../service/firebase";
 import { useWinState } from "../../context/data.context";
+import Socials from "../socials/socials";
 
 const Game = (props) => {
   const [loading, setLoading] = useState(false);
@@ -22,13 +23,15 @@ const Game = (props) => {
         <img
           src={pot}
           alt={pot}
-          className="pot"
+          className={!props.mobile ? "pot" : "pot-mobile"}
           onClick={handlePotClick}
           key={i}
         />
       );
     }
-    return <div className="pot-row">{row}</div>;
+    return (
+      <div className={!props.mobile ? "pot-row" : "pot-row-mobile"}>{row}</div>
+    );
   };
 
   const getAllPots = (potCount, count) => {
@@ -37,7 +40,7 @@ const Game = (props) => {
       pots.push({ ...getPotRow(potCount), key: `potrow ${i}` });
     }
     return (
-      <div className="all-pots">
+      <div className={!props.mobile ? "all-pots" : "all-pots-mobile"}>
         <img src={leaf} className="nuts-alt" alt="nuts-alt" />
         {pots}
       </div>
@@ -61,7 +64,12 @@ const Game = (props) => {
     }
   };
 
-  return <div className="game">{getAllPots(4, 3)}</div>;
+  return (
+    <div className={!props.mobile ? "game" : "game-mobile"}>
+      {getAllPots(props.mobile ? 3 : 4, props.mobile ? 4 : 3)}
+      {props.mobile && <Socials />}
+    </div>
+  );
 };
 
 export default Game;
