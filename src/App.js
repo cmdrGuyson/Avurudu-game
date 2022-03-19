@@ -22,6 +22,8 @@ import "react-toastify/dist/ReactToastify.css";
 import arrow from "./assets/images/arrow-btn.svg";
 
 import { WinStateProvider } from "./context/data.context";
+import ClaimMobile from "./mobile/claim";
+import FailMobile from "./mobile/fail";
 
 //ReactGA.initialize("G-7PM0YFSWY2");
 
@@ -54,7 +56,8 @@ function App() {
                 />
                 <Route exact path="/info-mobile" element={<InfoMobile />} />
                 <Route exact path="/result" element={<RegisterMobile />} />
-                <Route exact path="/fail" element={<Fail />} />
+                <Route exact path="/claim" element={<ClaimMobile />} />
+                <Route exact path="/fail" element={<FailMobile />} />
               </Routes>
             </Router>
           </>

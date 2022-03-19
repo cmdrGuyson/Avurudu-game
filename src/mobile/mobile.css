@@ -61,3 +61,101 @@
   left: 0;
   width: 150px;
 }
+
+.voucher-container-mobile {
+  width: 80%;
+  background-color: #bf2433;
+  border: solid;
+  border-color: black;
+  margin: auto;
+  position: relative;
+  z-index: 20;
+  padding: 20px;
+}
+
+.voucher-mobile {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.logo-voucher {
+  max-width: 200px;
+  margin-top: 25px;
+}
+
+.congrats-mobile {
+  width: 200px;
+  margin-top: 40px;
+}
+
+.code-mobile {
+  background-color: white;
+  text-align: center;
+  border: none;
+  padding: 8px;
+}
+
+.code-mobile p {
+  font-weight: bolder;
+  color: black;
+  font-size: 2rem;
+  padding-bottom: 30px;
+  text-shadow: 0px 0px 1px black;
+  margin: 0;
+  padding: 0;
+}
+
+.terms-txt-mobile {
+  font-weight: bolder;
+  color: white;
+  text-shadow: 0px 0px 1px white;
+  font-size: 0.8rem;
+  margin-top: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.link-txt-mobile {
+  font-weight: bolder;
+  color: white;
+  text-shadow: 0px 0px 1px white;
+  font-size: 1rem;
+}
+
+.flower1-mobile {
+  position: absolute;
+  width: 40px;
+  top: 30px;
+  left: -15px;
+  z-index: 25;
+}
+
+.flower3-mobile {
+  position: absolute;
+  width: 57px;
+  top: -22px;
+  right: -15px;
+}
+
+.fail-inner-mobile {
+  margin-top: 70px;
+}
+
+.fail-logo {
+  max-width: 200px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.fail-mobile {
+  margin: auto;
+}
+
+.fail-title-mobile {
+  font-weight: 800;
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 0px 0px 1px white;
+  padding-left: 45px;
+  padding-right: 45px;
+}
