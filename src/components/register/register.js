@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import "./register.css";
 import { useWinState } from "../../context/data.context";
 import Firebase from "../../service/firebase";
+import Socials from "../socials/socials";
 
-const Register = () => {
+const Register = (props) => {
   const winState = useWinState();
   const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const Register = () => {
   if (!winState?.winState?.winState) return null;
 
   return (
-    <div className="register">
+    <div className={!props.mobile ? "register" : "register-mobile"}>
       <img
         src={winState.winState.winState === "LOSE" ? lose : win}
         alt="logo"
@@ -55,7 +56,7 @@ const Register = () => {
       <p className="claim-text">
         ඔබගේ gift එක reveal කරන්න, පහත විස්තර පුරවන්න.
       </p>
-      <div className="input-fields">
+      <div className={!props.mobile ? "input-fields" : "input-fields-mobile"}>
         <input placeholder="Name" onChange={(e) => setName(e.target.value)} />
         <input
           placeholder="Mobile"
@@ -76,7 +77,12 @@ const Register = () => {
         </button>
         {/* <p className="or">or</p>
         <button className="fb-button">Login with Facebook</button> */}
-        <img src={dude} alt="dude" className="dude-img" />
+        {!props.mobile && <img src={dude} alt="dude" className="dude-img" />}
+        {props.mobile && (
+          <div style={{ marginTop: 20 }}>
+            <Socials />
+          </div>
+        )}
       </div>
     </div>
   );

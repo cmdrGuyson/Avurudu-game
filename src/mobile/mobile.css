@@ -33,6 +33,11 @@
   padding-right: 50px;
 }
 
+.register-mobile-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .info-mobile .how-to-title {
   font-size: 2.2rem;
   margin-bottom: 0;
@@ -41,4 +46,18 @@
 .info-mobile .what-is-title {
   font-size: 1.8rem;
   margin-bottom: 0;
+}
+
+.leaves-mobile-register {
+  position: absolute;
+  top: 280px;
+  right: 0;
+  width: 200px;
+}
+
+.nuts-mobile-register {
+  position: absolute;
+  top: 320px;
+  left: 0;
+  width: 150px;
 }

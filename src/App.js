@@ -15,6 +15,7 @@ import Unavailable from "./pages/unavailable/unavailable";
 
 import MainMobile from "./mobile/main";
 import InfoMobile from "./mobile/info";
+import RegisterMobile from "./mobile/register";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -52,7 +53,7 @@ function App() {
                   element={<MainMobile onClaim={onWin} />}
                 />
                 <Route exact path="/info-mobile" element={<InfoMobile />} />
-                <Route exact path="/claim" element={<Claim />} />
+                <Route exact path="/result" element={<RegisterMobile />} />
                 <Route exact path="/fail" element={<Fail />} />
               </Routes>
             </Router>

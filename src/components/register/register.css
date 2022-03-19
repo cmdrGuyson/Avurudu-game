@@ -6,6 +6,13 @@
   padding-left: 255px;
 }
 
+.register-mobile {
+  margin: auto;
+  z-index: 15;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
 .top-img {
   max-width: 500px;
 }
@@ -23,6 +30,13 @@
   margin-top: 80px;
   position: relative;
   padding-right: 180px;
+}
+
+.input-fields-mobile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  position: relative;
 }
 
 input {
