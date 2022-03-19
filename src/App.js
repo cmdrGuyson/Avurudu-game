@@ -12,7 +12,9 @@ import win from "./assets/sounds/win.mp3";
 import { useRef } from "react";
 import Fail from "./pages/fail/fail";
 import Unavailable from "./pages/unavailable/unavailable";
+
 import MainMobile from "./mobile/main";
+import InfoMobile from "./mobile/info";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +22,7 @@ import arrow from "./assets/images/arrow-btn.svg";
 
 import { WinStateProvider } from "./context/data.context";
 
-ReactGA.initialize("G-7PM0YFSWY2");
+//ReactGA.initialize("G-7PM0YFSWY2");
 
 function App() {
   const audioRef = useRef(null);
@@ -42,7 +44,6 @@ function App() {
       <WinStateProvider>
         {window.innerWidth < 1100 ? (
           <>
-            <img alt="info-btn" src={arrow} className="info-btn" />
             <Router>
               <Routes>
                 <Route
@@ -50,7 +51,7 @@ function App() {
                   path="/"
                   element={<MainMobile onClaim={onWin} />}
                 />
-                <Route exact path="/result" element={<Result />} />
+                <Route exact path="/info-mobile" element={<InfoMobile />} />
                 <Route exact path="/claim" element={<Claim />} />
                 <Route exact path="/fail" element={<Fail />} />
               </Routes>

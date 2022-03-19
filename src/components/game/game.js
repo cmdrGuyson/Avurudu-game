@@ -10,6 +10,8 @@ import Firebase from "../../service/firebase";
 import { useWinState } from "../../context/data.context";
 import Socials from "../socials/socials";
 
+import arrow from "../../assets/images/arrow-btn.svg";
+
 const Game = (props) => {
   const [loading, setLoading] = useState(false);
 
@@ -47,6 +49,10 @@ const Game = (props) => {
     );
   };
 
+  const onClickArrow = () => {
+    navigate("/info-mobile");
+  };
+
   const handlePotClick = async () => {
     props.onClaim?.();
     setLoading(true);
@@ -66,6 +72,14 @@ const Game = (props) => {
 
   return (
     <div className={!props.mobile ? "game" : "game-mobile"}>
+      {props.mobile && (
+        <img
+          alt="info-btn"
+          src={arrow}
+          className="info-btn"
+          onClick={onClickArrow}
+        />
+      )}
       {getAllPots(props.mobile ? 3 : 4, props.mobile ? 4 : 3)}
       {props.mobile && <Socials />}
     </div>
