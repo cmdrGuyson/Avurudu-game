@@ -25,7 +25,7 @@ import { WinStateProvider } from "./context/data.context";
 import ClaimMobile from "./mobile/claim";
 import FailMobile from "./mobile/fail";
 
-//ReactGA.initialize("G-7PM0YFSWY2");
+ReactGA.initialize("G-7PM0YFSWY2");
 
 function App() {
   const audioRef = useRef(null);

@@ -59,13 +59,14 @@ const Game = (props) => {
     try {
       if (!loading) {
         const type = await Firebase.getWinningVoucher();
+        setLoading(false);
         navigate("/result");
         winState.setWin({ ...winState, winState: type });
       }
+      setLoading(false);
     } catch (error) {
       toast.error(error);
       console.log(error);
-    } finally {
       setLoading(false);
     }
   };

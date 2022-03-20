@@ -20,7 +20,7 @@ const {
   Timestamp,
   arrayUnion,
 } = require("firebase/firestore");
-const config = require("./dev-config.json");
+const config = require("./config.json");
 
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
@@ -69,12 +69,12 @@ class Firebase {
     console.log("number", number);
     if (
       number <= settings.premiumWinRate &&
-      settings.premiumCountToday <= settings.premiumWinCount
+      settings.premiumCountToday < settings.premiumWinCount
     ) {
       return "PREMIUM";
     } else if (
       number <= settings.standardWinRate &&
-      settings.standardCountToday <= settings.standardWinCount
+      settings.standardCountToday < settings.standardWinCount
     ) {
       return Math.random() < 0.5 ? "STANDARD" : "LOW";
     } else {

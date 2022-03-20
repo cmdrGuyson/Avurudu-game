@@ -10,7 +10,7 @@ import Register from "../components/register/register";
 
 const RegisterMobile = (props) => {
   useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: "/info-mobile" });
+    ReactGA.send({ hitType: "pageview", page: "/result" });
   }, []);
 
   return (
