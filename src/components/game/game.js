@@ -58,6 +58,12 @@ const Game = (props) => {
     setLoading(true);
     try {
       if (!loading) {
+        const played = localStorage.getItem("8293742034");
+        if (played) {
+          navigate("/fail");
+          return;
+        }
+        localStorage.setItem("8293742034", true);
         const type = await Firebase.getWinningVoucher();
         setLoading(false);
         navigate("/result");

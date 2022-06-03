@@ -3,10 +3,7 @@ import ReactGA from "react-ga4";
 
 import lines from "../assets/images/lines.svg";
 import lines2 from "../assets/images/lines2.svg";
-import nuts from "../assets/images/nuts-alt.svg";
 import logo from "../assets/images/logo.svg";
-import man1 from "../assets/images/man-flower.svg";
-import man2 from "../assets/images/man-flower2.svg";
 import fail from "../assets/images/fail.svg";
 
 import "./mobile.css";
