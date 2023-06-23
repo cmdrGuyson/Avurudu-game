@@ -18,6 +18,10 @@ const MainMobile = (props) => {
       <img src={leaves} className="leaves-left-mobile" alt="leaves-left" />
       <img src={logo} alt="logo" className="logo-mobile" />
       <Game onClaim={props.onClaim} mobile />
+      <p className="created-by">
+        Created by{" "}
+        <a href="https://www.linkedin.com/in/guyson/">Gayanga Kuruppu</a>
+      </p>
     </div>
   );
 };

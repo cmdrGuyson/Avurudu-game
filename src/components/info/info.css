@@ -23,6 +23,22 @@
   text-shadow: 0px 0px 1px white;
 }
 
+.created-by {
+  font-weight: bolder;
+  color: white;
+  font-size: 1.3rem;
+  padding-bottom: 30px;
+  text-shadow: 0px 0px 1px white;
+}
+
+.created-by a {
+  font-weight: bolder;
+  color: white;
+  font-size: 1.3rem;
+  padding-bottom: 30px;
+  text-shadow: 0px 0px 1px white;
+}
+
 .what-is-title {
   font-weight: 800;
   color: #fbae17;

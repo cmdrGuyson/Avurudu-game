@@ -32,6 +32,10 @@ const Info = () => {
         </li>
       </ul>
       <Socials />
+      <p className="created-by">
+        Created by{" "}
+        <a href="https://www.linkedin.com/in/guyson/">Gayanga Kuruppu</a>
+      </p>
     </div>
   );
 };
