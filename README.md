@@ -2,7 +2,7 @@
 
 Avurudu game application to win gift vouchers from an e-commerce site.
 
-- Over 600+ participants
+- Over 1000+ participants
 
 ![Screenshot](screen2.png)
 
